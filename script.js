@@ -1,4 +1,4 @@
-
+/* 
 const saludo = (nombre) => {
     nombre = prompt("Ingrese su nombre").toUpperCase()
     while (nombre == "") {
@@ -80,11 +80,96 @@ if (atencionAlCliente == 1) {
     alert("¡Gracias de todas formas!")
 } else {
     alert("Opción incorrecta")
+} */
+
+let catalogo = [
+    { id: 1, categoria: "Aromaterapia", precio: 380, nombre: "aceite Esencial de jazmín" },
+    { id: 2, categoria: "Aromaterapia", precio: 415, nombre: "aceite esencial de lavanda" },
+    { id: 3, categoria: "Aromaterapia", precio: 440, nombre: "aceite esencial de magnolia" },
+    { id: 4, categoria: "aceite para masajes", precio: 695, nombre: "aceite para masajes de romero" },
+    { id: 5, categoria: "aceite para masajes", precio: 530, nombre: "aceite neutro para masajes" },
+    { id: 6, categoria: "sal de baño", precio: 490, nombre: "sal de baño aromática" },
+    { id: 7, categoria: "crema facial", precio: 1300, nombre: "crema facial baba de caracol" },
+    { id: 8, categoria: "crema corporal", precio: 2200, nombre: "crema corporal de almendras" },
+    { id: 9, categoria: "crema corporal", precio: 2230, nombre: "crema corporal de coco" },
+]
+
+const carrito = []
+
+let producto
+let lecturaProductos
+//let comprar = true
+
+const buscarCatalogo = (id) => {
+    return catalogo.find(el => el.id === id)
 }
 
+/* let preguntaDeCompra = prompt("¿Te gustaria comprar algunos de los productos q tenemos a la venta?\n Ingrese: S o N").toUpperCase()
+if (preguntaDeCompra == "S") {
+    while (comprar) {
+        lecturaProductos = parseInt(prompt("Este es nuestro catálogo, elige por su número de ID: \n" + catalogo.map((el) => el.id + ") " + el.nombre + " $" + el.precio).join("\n")))
+        if (lecturaProductos >= 1 && lecturaProductos <= 9) {
+            producto = buscarCatalogo(lecturaProductos)
+            comprar = confirm("¿Deseas seguir comprando?");
+        } else {
+            alert("El número ingresado es inválido")
+        }
+        carrito.push(producto)
+    }
+    console.log(carrito)
+} else if (preguntaDeCompra == "N") {
+    alert("Que sigas disfrutando de nuestra web")
+} else {
+    alert("Opción incorrecta")
+} */
 
+let seguirComprando
+let preguntaDeCompra = prompt("¿Te gustaria comprar algunos de los productos q tenemos a la venta?\n Ingrese: S o N").toUpperCase()
+if (preguntaDeCompra == "S") {
+    do {
+        lecturaProductos = parseInt(prompt("Este es nuestro catálogo, elige por su número de ID: \n" + catalogo.map((el) => el.id + ") " + el.nombre + " $" + el.precio).join("\n")))
+        if (lecturaProductos >= 1 && lecturaProductos <= 9) {
+            producto = buscarCatalogo(lecturaProductos)
+        } else {
+            alert("El número ingresado es inválido")
+        }
+        carrito.push(producto)
+        let totalComprado = ""
+        carrito.forEach(carrito => totalComprado += `- ${carrito.nombre} $${carrito.precio} \n`)
+        alert(`Tu carrito tiene hasta el momento:\n${totalComprado}`)
+        seguirComprando = Number(prompt("¿Quieres seguir comprando? Elija:\n1- SI\n2 - NO"))
+    } while (seguirComprando != 2)
+} else if (preguntaDeCompra == "N") {
+    alert("Que sigas disfrutando de nuestra web")
+} else {
+    alert("Opción incorrecta")
+}
+console.log(carrito)
 
+/* let seguirComprando
+let preguntaDeCompra = prompt("¿Te gustaria comprar algunos de los productos q tenemos a la venta?\n Ingrese: S o N").toUpperCase()
+if (preguntaDeCompra == "S") {
+    while (seguirComprando != 1) {
+        lecturaProductos = parseInt(prompt("Este es nuestro catálogo, elige por su número de ID: \n" + catalogo.map((el) => el.id + ") " + el.nombre + " $" + el.precio).join("\n")))
+        if (lecturaProductos >= 1 && lecturaProductos <= 9) {
+            producto = buscarCatalogo(lecturaProductos)
+        } else {
+            alert("El número ingresado es inválido")
+        }
+        carrito.push(producto)
+        let totalComprado = ""
+        carrito.forEach(carrito => totalComprado += `- ${carrito.nombre} $${carrito.precio} \n`)
+        alert(`Tu carrito tiene hasta el momento:\n${totalComprado}`)
+        seguirComprando = Number(prompt("¿Quieres seguir comprando? Elija:\nCualquier tecla para seguir\n1 - para salir"))
+    }
+    console.log(carrito)
+} else if (preguntaDeCompra == "N") {
+    alert("Que sigas disfrutando de nuestra web")
+} else {
+    alert("Opción incorrecta")
+} */
 
+//let borrarProducto = Number(prompt("¿Te gustaria borrar algún articulo del carrito?"))
 
 
 
