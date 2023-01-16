@@ -1,4 +1,4 @@
-/* 
+
 const saludo = (nombre) => {
     nombre = prompt("Ingrese su nombre").toUpperCase()
     while (nombre == "") {
@@ -80,9 +80,9 @@ if (atencionAlCliente == 1) {
     alert("¡Gracias de todas formas!")
 } else {
     alert("Opción incorrecta")
-} */
+}
 
-let catalogo = [
+const catalogo = [
     { id: 1, categoria: "Aromaterapia", precio: 380, nombre: "aceite Esencial de jazmín" },
     { id: 2, categoria: "Aromaterapia", precio: 415, nombre: "aceite esencial de lavanda" },
     { id: 3, categoria: "Aromaterapia", precio: 440, nombre: "aceite esencial de magnolia" },
@@ -91,57 +91,59 @@ let catalogo = [
     { id: 6, categoria: "sal de baño", precio: 490, nombre: "sal de baño aromática" },
     { id: 7, categoria: "crema facial", precio: 1300, nombre: "crema facial baba de caracol" },
     { id: 8, categoria: "crema corporal", precio: 2200, nombre: "crema corporal de almendras" },
-    { id: 9, categoria: "crema corporal", precio: 2230, nombre: "crema corporal de coco" },
+    { id: 9, categoria: "crema corporal", precio: 2230, nombre: "crema corporal de coco" }
 ]
-
 const carrito = []
 
-let producto
-let lecturaProductos
+let productoElegido
+let mostrarProductos
+let seguirComprando
+let totalComprado 
 
 const buscarCatalogo = (id) => {
     return catalogo.find(el => el.id === id)
 }
 
-let totalComprado = ""
-let seguirComprando
 let preguntaDeCompra = prompt("¿Te gustaria comprar algunos de los productos q tenemos a la venta?\n Ingrese: S o N").toUpperCase()
 if (preguntaDeCompra == "S") {
     while (seguirComprando != 1) {
-        lecturaProductos = parseInt(prompt("Este es nuestro catálogo, elige por su número de ID: \n" + catalogo.map((el) => el.id + ") " + el.nombre + " $" + el.precio).join("\n")))
-        if (lecturaProductos >= 1 && lecturaProductos <= 9) {
-            producto = buscarCatalogo(lecturaProductos)
+        mostrarProductos = parseInt(prompt("Este es nuestro catálogo, elige por su número de ID: \n" + catalogo.map((el) => el.id + ") " + el.nombre + " $" + el.precio).join("\n")))
+        if (mostrarProductos >= 1 && mostrarProductos <= 9) {
+            productoElegido = buscarCatalogo(mostrarProductos)
         } else {
             alert("El número ingresado es inválido")
         }
-        carrito.push(producto)
+        carrito.push(productoElegido)
         totalComprado = ""
         carrito.forEach(carrito => totalComprado += `- ${carrito.nombre} $${carrito.precio} \n`)
         alert(`Tu carrito tiene hasta el momento:\n${totalComprado}`)
         seguirComprando = Number(prompt("¿Quieres seguir comprando? Elija:\nCualquier tecla para seguir\n1 - para salir"))
     }
-    console.log(carrito)
-} else if (preguntaDeCompra == "N") {
-    alert("Que sigas disfrutando de nuestra web")
-} else {
-    alert("Opción incorrecta")
-}
+}else if (preguntaDeCompra == "N") {
+        alert("Que sigas disfrutando de nuestra web")
+    } else {
+        alert("Opción incorrecta")
+    }
 
-let seguirEliminando
-let lecturaProductosEliminar
-let productoRemovido
+console.log(carrito)
+
+
+let productoEliminado
+let elegirProductoEliminar
 
 const buscarCarrito = (id) => {
-    return carrito.find(el => el.id === id);
+    return carrito.find(el => el.id === id)
 }
 
+
+let seguirEliminando
 let eliminarProductos = prompt("¿Te gustaria gustaria eliminar algun producto?\n Ingrese: S o N").toUpperCase()
 if (eliminarProductos == "S") {
     while (seguirEliminando != 1) {
-        lecturaProductosEliminar = parseInt(prompt("Si deseas eliminar algún producto, elige su ID: \n" + "Tu carrito contiene: \n" + carrito.map(el => el.id + ") " + el.nombre + " $" + el.precio).join("\n")))
-        if (lecturaProductosEliminar >= 1 && lecturaProductosEliminar <= 9) {
-            productoRemovido = buscarCarrito(lecturaProductosEliminar)
-            carrito.splice(((productoRemovido.id) - 1), 1)
+        elegirProductoEliminar = parseInt(prompt("Si deseas eliminar algún producto, elige su ID: \n" + "Tu carrito contiene: \n" + carrito.map(el => el.id + ") " + el.nombre + " $" + el.precio).join("\n")))
+        if (elegirProductoEliminar >= 1 && elegirProductoEliminar <= 9) {
+            productoEliminado = buscarCarrito(elegirProductoEliminar)
+            carrito.splice(((productoEliminado.id) - 1), 1)
         } else {
             alert("El número ingresado es inválido")
         }
@@ -149,9 +151,8 @@ if (eliminarProductos == "S") {
     }
 }
 console.log(carrito)
-let gastoTotal = 0
-for(producto of carrito){
-    gastoTotal += producto.precio;
-}
-alert("Muchas Gracias por tu compra! Tu gasto total es: $" + gastoTotal)
 
+let gastoTotal = 0
+for (producto of carrito) {
+    gastoTotal += producto.precio
+} alert("Muchas Gracias por tu compra! Tu gasto total es: $" + gastoTotal)
