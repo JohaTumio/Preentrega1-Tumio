@@ -71,12 +71,12 @@ let opcionMenuAtencion
 if (atencionAlCliente == 1) {
     menuAtencion = "Ingrese: \n1 - Está muy conforme\n2 - Esta poco conforme\n3 - No está para nada conforme"
     opcionMenuAtencion = Number(prompt(menuAtencion))
-    if (opcionMenuAtencion == 1){
+    if (opcionMenuAtencion == 1) {
         alert("Estamos felices de poder cumplirle a nuestros clientes")
-    } else if (opcionMenuAtencion == 2 || opcionMenuAtencion == 3){
+    } else if (opcionMenuAtencion == 2 || opcionMenuAtencion == 3) {
         alert("Lamentamos no poder cumplir con sus expectativas, seguiremos trabajando para mejorar")
     }
-} else if (atencionAlCliente == 2){
+} else if (atencionAlCliente == 2) {
     alert("¡Gracias de todas formas!")
 } else {
     alert("Opción incorrecta")
@@ -98,7 +98,7 @@ const carrito = []
 let productoElegido
 let mostrarProductos
 let seguirComprando
-let totalComprado 
+let totalComprado
 
 const buscarCatalogo = (id) => {
     return catalogo.find(el => el.id === id)
@@ -119,14 +119,11 @@ if (preguntaDeCompra == "S") {
         alert(`Tu carrito tiene hasta el momento:\n${totalComprado}`)
         seguirComprando = Number(prompt("¿Quieres seguir comprando? Elija:\nCualquier tecla para seguir\n1 - para salir"))
     }
-}else if (preguntaDeCompra == "N") {
-        alert("Que sigas disfrutando de nuestra web")
-    } else {
-        alert("Opción incorrecta")
-    }
-
-console.log(carrito)
-
+} else if (preguntaDeCompra == "N") {
+    alert("Que sigas disfrutando de nuestra web")
+} else {
+    alert("Opción incorrecta")
+}
 
 let productoEliminado
 let elegirProductoEliminar
@@ -134,7 +131,6 @@ let elegirProductoEliminar
 const buscarCarrito = (id) => {
     return carrito.find(el => el.id === id)
 }
-
 
 let seguirEliminando
 let eliminarProductos = prompt("¿Te gustaria gustaria eliminar algun producto?\n Ingrese: S o N").toUpperCase()
@@ -150,7 +146,6 @@ if (eliminarProductos == "S") {
         seguirEliminando = Number(prompt("¿Quieres seguir eliminando? Elija:\nCualquier tecla para seguir\n1 - para salir"))
     }
 }
-console.log(carrito)
 
 let gastoTotal = 0
 for (producto of carrito) {
